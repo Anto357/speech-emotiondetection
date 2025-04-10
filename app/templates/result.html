@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #4a90e2;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .result-card {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .emotion-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .btn-back {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <a class="navbar-brand" href="#"><i class="fas fa-microphone"></i> SER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="result-card">
+            <h2>Predicted Emotion</h2>
+            {% if emotion == "Happy" %}
+                <i class="fas fa-laugh emotion-icon" style="color: #ffd700;"></i>
+            {% elif emotion == "Sadness" %}
+                <i class="fas fa-sad-tear emotion-icon" style="color: #1e90ff;"></i>
+            {% elif emotion == "Anger" %}
+                <i class="fas fa-angry emotion-icon" style="color: #ff4500;"></i>
+            {% elif emotion == "Fear" %}
+                <i class="fas fa-flushed emotion-icon" style="color: #8a2be2;"></i>
+            {% elif emotion == "Disgust" %}
+                <i class="fas fa-tired emotion-icon" style="color: #32cd32;"></i>
+            {% elif emotion == "Neutral" %}
+                <i class="fas fa-meh emotion-icon" style="color: #a9a9a9;"></i>
+            {% endif %}
+            <p>The detected emotion is: <strong>{{ emotion }}</strong></p>
+            <a href="/" class="btn-back">Upload Another File</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
